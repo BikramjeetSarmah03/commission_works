@@ -1,0 +1,84 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import "custom.css";
+
+@layer components {
+  .header {
+    @apply fixed z-50 w-full text-3xl p-2 md:text-[2.5rem] text-center bg-white shadow-md font-medium;
+  }
+
+  .game_pic {
+    @apply relative ml-[10px];
+  }
+
+  .title {
+    @apply absolute top-0 left-0 h-auto text-base font-bold;
+  }
+
+  .chip_inner {
+    @apply p-1 bg-[rgba(0,0,0,0.66)] w-[95%] ml-[9px];
+  }
+
+  .chip_codes {
+    @apply flex items-center text-white opacity-75 drop-shadow-[1px_1px_rgba(0,0,0,71%)];
+  }
+
+  .description {
+    @apply text-sm leading-6 font-semibold border-x ml-[9px] rounded shadow pt-[5px] pl-[8px] min-h-[80px];
+  }
+
+  .detail_view {
+    @apply absolute p-[6px] bg-[rgba(22,22,22,0.842)] text-white shadow-[2px_5px_10px_rgba(0,0,0,0.287)];
+  }
+
+  .detail_view p {
+    @apply m-1 w-max;
+  }
+
+  .chip_container {
+    @apply mb-[40px] mt-4 mx-[10px] duration-200 list-none;
+    filter: drop-shadow(0px 1px 2px black) grayscale(10%) brightness(90%);
+  }
+
+  .chip_container:hover {
+    @apply duration-200;
+    filter: drop-shadow(0px 25px 5px rgba(0, 0, 0, 0.455));
+    transform: rotate3d(1, 0, 0, -20deg);
+  }
+
+  .chip-box {
+    @apply px-4 pt-4 border-2 rounded-md cursor-pointer h-72 sm:h-80 w-[180px] duration-200 sm:w-[200px];
+  }
+
+  .available_bin {
+    @apply flex flex-wrap last:mb-64;
+  }
+
+  .shopping_bin {
+    @apply fixed p-4 pr-16 pl-32 bottom-0 w-full bg-white h-56 md:h-60 shadow-[0_-4px_6px_-4px_rgba(0,0,0,0.1)] z-40 duration-300;
+    animation: slideUp 3s;
+  }
+
+  .bin {
+    @apply relative flex h-full p-4 overflow-x-scroll overflow-y-hidden border-4 border-black border-dashed;
+
+    background-image: url("@/assets/images/dragon_drop.png");
+    background-position: center;
+    background-size: 100px;
+    background-repeat: no-repeat;
+  }
+
+  .bin li {
+    @apply -mx-10 -mt-10 scale-50;
+  }
+
+  .bin li:hover {
+    @apply -mx-10 -mt-10 scale-50;
+  }
+
+  .msg_box_inner {
+    @apply absolute bg-red-400 h-[250px] min-w-[350px] left-24  bottom-36  p-4 text-center text-base flex justify-center items-center;
+  }
+}
