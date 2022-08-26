@@ -9,32 +9,30 @@
         alt="hman"
         class="fixed bottom-0 -scale-x-100 translate-y-[400px] left-[-100px] hman_comeIn"
       />
-      <!-- hman_comeIn  -->
       <!-- By default it's hidden -->
-      <div class="hidden">
-        <div class="msg_box_inner -rotate-4 clip_message">
-          <div class="-mt-5 rotate-4">Message</div>
+      <div class="msg_box_outer -rotate-4" style="display: none">
+        <div class="-mt-5 rotate-4 msg_box_inner">
+          <div class="message">Message</div>
         </div>
       </div>
     </div>
 
     <!-- Navbar -->
     <div class="header">
-      <button
-        class="absolute text-lg cursor-pointer left-5 top-2"
-        @click.prevent="toggle()"
-      >
-        X
+      <button class="hamburgerIcon" @click.prevent="toggle()">
+        <div :class="[!isSidebar ? '' : 'active']"></div>
+        <div :class="[!isSidebar ? '' : 'active']"></div>
+        <div :class="[!isSidebar ? '' : 'active']"></div>
       </button>
-      <h1>Higsby's Clearance Bin</h1>
+      <h1 class="text-sm md:text-[2.5rem] md:p-2">Higsby's Clearance Bin</h1>
     </div>
 
     <div class="flex">
-      <div class="flex sidebar" :class="[!open ? 'slideIn' : ' slideOut']">
-        <Sidebar />
+      <div class="flex" :class="[!isSidebar ? 'slideIn' : ' slideOut']">
+        <Sidebar :isSidebar="isSidebar" />
       </div>
       <!-- Content -->
-      <div class="px-[15px] pt-16">
+      <div class="pt-16">
         <div>
           <draggable
             ghost-class="ghost"
@@ -93,7 +91,7 @@ export default {
         pickup: new Audio(require("@/assets/sounds/pickup.mp3")),
       },
       dropAnim: "",
-      open: false,
+      isSidebar: false,
     };
   },
 
@@ -127,9 +125,7 @@ export default {
     },
 
     toggle() {
-      this.open = !this.open;
-      console.log(this.open);
-      console.log("slidebar");
+      this.isSidebar = !this.isSidebar;
     },
     animationOrder(idx) {
       return "--animation-order: " + idx + ";";
@@ -140,33 +136,21 @@ export default {
 
 <style>
 .slideIn {
-  transform: translateX(-150px);
-  transition: all 2s ease-in-out;
+  transform: translateX(-300px);
+  transition: all 500ms ease-in-out;
+  display: none;
+  margin-right: -150px;
 }
 
 .slideOut {
   transform: translateX(0);
-  transition: all 2s ease-in-out;
+  transition: all 500ms ease-in-out;
+  display: block;
+  margin-right: 10px;
 }
 
 .hman_comeIn {
   animation: comeIn 3s;
-}
-
-.clip_message {
-  clip-path: polygon(
-    33% 34%,
-    100% 17%,
-    100% 79%,
-    32% 58%,
-    26% 70%,
-    18% 57%,
-    12% 63%,
-    1% 52%,
-    13% 51%,
-    15% 43%,
-    26% 47%
-  );
 }
 
 @keyframes comeIn {
