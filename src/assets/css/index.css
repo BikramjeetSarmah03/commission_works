@@ -57,12 +57,12 @@
   }
 
   .shopping_bin {
-    @apply fixed p-4 pr-16 pl-32 bottom-0 w-full bg-white h-56 md:h-60 shadow-[0_-4px_6px_-4px_rgba(0,0,0,0.1)] z-40 duration-300;
+    @apply fixed p-4 pr-16 pl-32 bottom-0 w-full bg-white h-60 shadow-[0_-4px_6px_-4px_rgba(0,0,0,0.1)] z-40 duration-300;
     animation: slideUp 3s;
   }
 
   .bin {
-    @apply relative flex h-full p-4 overflow-x-scroll overflow-y-hidden border-4 border-black border-dashed;
+    @apply relative flex h-full p-4 overflow-x-scroll overflow-y-hidden border-4 border-black border-dashed ml-[-70px] md:ml-0 mr-[6rem];
 
     background-image: url("@/assets/images/dragon_drop.png");
     background-position: center;
@@ -79,11 +79,12 @@
   }
 
   .msg_box_outer {
-    @apply absolute bg-black h-[250px] min-w-[350px] left-24  bottom-36  p-4 text-center text-base;
+    @apply absolute bg-black h-[400px] max-w-[700px] md:min-w-[700px] left-24  bottom-16  p-4 text-center text-base hidden md:block;
+    /* @apply absolute bg-black h-[700px] w-screen left-24 bottom-[-80px]  p-4 text-center text-base hidden md:block; */
   }
 
   .msg_box_inner {
-    @apply flex items-center justify-center text-black bg-gradient-to-r from-white to-gray-200;
+    @apply flex items-center justify-center w-auto text-black bg-gradient-to-r from-white to-gray-200;
   }
   .hamburgerIcon {
     @apply absolute w-[30px] h-[25px] text-lg cursor-pointer left-5 top-2 -mt-1 md:mt-1;
@@ -100,6 +101,14 @@
 
   .filters .item {
     @apply w-full py-2 border-b cursor-pointer hover:shadow-[inset_0px_2px_4px_1px_rgba(0,0,0,0.1)] hover:border-none;
+  }
+
+  .download_btn {
+    @apply absolute px-8 py-2 text-xl text-center transition-all duration-200 bg-blue-300 rounded-md bottom-4 right-2 hover:bg-blue-400;
+  }
+
+  .msg_box_dock {
+    @apply bg-white md:hidden h-10 min-w-[300px] w-full absolute left-0 top-[-100px] border-2 border-black px-4 py-2;
   }
 }
 
@@ -130,4 +139,6 @@
 
 .message {
   margin-top: -10px;
+  margin-left: 150px;
+  text-align: left;
 }

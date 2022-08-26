@@ -7,12 +7,15 @@
       <img
         src="@/assets/images/hman.png"
         alt="hman"
-        class="fixed bottom-0 -scale-x-100 translate-y-[400px] left-[-100px] hman_comeIn"
+        class="fixed bottom-0 -scale-x-100 translate-y-[400px] left-[-100px] hidden md:block hman_comeIn"
       />
       <!-- By default it's hidden -->
-      <div class="msg_box_outer -rotate-4" style="display: none">
+      <div
+        class="msg_box_outer -rotate-4 msg_box_slideIn"
+        style="display: none"
+      >
         <div class="-mt-5 rotate-4 msg_box_inner">
-          <div class="message">Message</div>
+          <div class="message">Message Box</div>
         </div>
       </div>
     </div>
@@ -54,6 +57,8 @@
       </div>
     </div>
     <div class="shopping_bin">
+      <div class="msg_box_dock top-[-40px]">Message Box</div>
+
       <draggable
         ghost-class="ghost"
         group="mods"
@@ -65,6 +70,8 @@
       >
         <chip-widget v-for="(mod, idx) in checkout" :key="idx" />
       </draggable>
+
+      <button class="download_btn">Download</button>
     </div>
   </div>
 </template>
@@ -159,6 +166,20 @@ export default {
   }
   100% {
     left: -100px;
+  }
+}
+.msg_box_slideIn {
+  animation: msg_slideIn 2s;
+}
+
+@keyframes msg_slideIn {
+  0% {
+    opacity: 0;
+    transform: translateX(-200px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
   }
 }
 </style>
